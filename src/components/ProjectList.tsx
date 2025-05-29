@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { ProjectAPI } from "../api/ProjectAPI";
 import type { Project } from "../models/Project";
 
-export default function ProjectList() {
+interface Props {
+  reload: boolean;
+}
+
+export default function ProjectList({ reload }: Props) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [editId, setEditId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
@@ -12,9 +16,9 @@ export default function ProjectList() {
     setProjects(ProjectAPI.getAll());
   };
 
-  useEffect(() => {
-    loadProjects();
-  }, []);
+    useEffect(() => {
+    setProjects(ProjectAPI.getAll());
+  }, [reload]);
 
   const handleDelete = (id: string) => {
     ProjectAPI.delete(id);
