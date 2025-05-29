@@ -90,6 +90,8 @@ export default function StoryList({ projectId }: Props) {
                 />
                 <br />
                 <textarea
+                  className="block-fixed"
+                  style={{maxHeight: "100px", overflow: "auto", margin:"0.25rem 0"}}
                   value={editData.description}
                   onChange={(e) => setEditData({ ...editData, description: e.target.value })}
                   placeholder="Opis"
@@ -109,9 +111,12 @@ export default function StoryList({ projectId }: Props) {
                 }}
               >
                 <strong>{s.name}</strong>
-                <br />
+                <div
+                className="block-fixed text-clamp-3"
+                style={{ margin: "0.25rem 0" }}
+                >
                 {s.description}
-                <br />
+                </div>
                 <small>Priorytet: {s.priority}</small>
                 <br />
                 <button onClick={() => startEdit(s)} style={{ marginRight: "0.5rem" }}>

@@ -77,8 +77,11 @@ export default function ProjectList({ reload }: Props) {
               alignItems: "center",
             }}
           >
-            <div>
-              <strong>{project.name}</strong>: {project.description}
+            <div className="block-fixed">
+              <strong>{project.name}</strong>:
+              <span className="text-truncate" style={{ marginLeft: 4 }}>
+                {project.description}
+              </span>
             </div>
             <div style={{ display: "flex", gap: "0.5rem" }}>
               <button
