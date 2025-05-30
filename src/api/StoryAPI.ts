@@ -36,4 +36,9 @@ export class StoryAPI {
     const stories = this.getAll().filter(s => s.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
   }
+
+   static getById(id: string): Story | null {
+    const stories = this.getAll();
+    return stories.find(s => s.id === id) || null;
+  }
 }
