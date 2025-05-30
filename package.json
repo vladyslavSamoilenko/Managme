@@ -2,16 +2,19 @@
   "name": "managme",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "start": "dotenv -e config.env react-scripts start",
-    "dev": "vite",
+    "start": "node server.js",
+    "dev": "node server.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "mongodb": "^6.16.0",
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "uuid": "^11.1.0"

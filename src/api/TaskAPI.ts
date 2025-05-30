@@ -14,9 +14,7 @@ export class TaskAPI {
   }
 
   static async create(
-  data: Omit<
-    Task,
-    "id" | "state" | "createdAt" | "startedAt" | "completedAt" | "assignedUserId" | "spentHours"
+  data: Omit<Task,"id" | "state" | "createdAt" | "startedAt" | "completedAt" | "assignedUserId" | "spentHours"
   >
     ) : Promise<Task> {
   const res = await fetch(`${BASE}/tasks`, {

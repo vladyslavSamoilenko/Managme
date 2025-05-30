@@ -92,3 +92,51 @@ button:focus-visible {
   max-width: 300px;          /* подкорректируйте по вашему макету */
   word-wrap: break-word;     /* перенос длинных слов */
 }
+
+:root {
+  --bg-light: #ffffff;
+  --bg-dark:  #111111;
+  --text-light: #000000;
+  --text-dark:  #ffffff;
+}
+
+.app-container.light {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+.app-container.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* 1.2. Переменные по умолчанию (light) */
+:root {
+  --bg-page:     #ffffff;
+  --bg-section:  #f7f7f7;
+  --bg-card:     #e0e0e0;
+  --text-primary:#000000;
+}
+
+/* 1.3. Dark theme */
+body[data-theme="dark"] {
+  --bg-page:     #111111;
+  --bg-section:  #222222;
+  --bg-card:     #333333;
+  --text-primary:#ffffff;
+}
+
+/* 1.4. Глобальный переход для фоновых и текстовых цветов */
+html, body, #root,
+h1, h2, h3, h4, h5, h6,
+p, button, input, select, textarea,
+.app-section, .app-card {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+

@@ -11,12 +11,15 @@ import {TaskForm } from "./components/TaskForm";
 import { TaskDetails } from "./components/TaskDetails";
 import type { Task } from "./models/Task";
 
+
 export default function App() {
   const user = UserAPI.getLoggedUser();
   // reload trigger for all lists
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [reload, setReload] = useState(false);
   const triggerReload = () => setReload(r => !r);
 
+  const toggleTheme = () => setTheme(t => (t === "dark" ? "light" : "dark"));
   // active project
   const [activeProjectId, setActiveProjectId] = useState<string | null>(
     ActiveProjectAPI.getActiveProject()
@@ -53,9 +56,13 @@ export default function App() {
   const handleSelect = (id: string) => setSelectedTaskId(id);
 
   return (
-    <div style={{ maxWidth: 960, margin: "0 auto", padding: 24, color: "white", fontFamily: "sans-serif" }}>
-      <header style={{ marginBottom: 24 }}>
+    <div className={`app-container ${theme}`} style={{ maxWidth: 960, margin: "0 auto", padding: 24, color: "white", fontFamily: "sans-serif" }}>
+      <header style={{ marginBottom: 24,  display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <h1 style={{ textAlign: "center", fontSize: 28 }}>ManagMe</h1>
+        {/* ♦ 3) кнопка переключения темы */}
+        <button onClick={toggleTheme} style={{ cursor: "pointer", padding: "0.5rem 1rem" }}>
+          {theme === "dark" ? "🌞 Day" : "🌙 Night"}
+        </button>
         <p style={{ textAlign: "right", opacity: 0.7 }}>
           {user.firstName} {user.lastName}
         </p>
